@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
     final user = Provider.of<AppUser>(context);
     if (user == null) throw Exception("user not found");
     final database = DatabaseService(user.uid);
-    print(database.user);
+    
     return StreamProvider<AppUserData?>.value(
       initialData: null,
       value: database.user,
@@ -31,6 +31,7 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
+        body: ,
       ),
     );
   }

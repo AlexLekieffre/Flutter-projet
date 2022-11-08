@@ -98,6 +98,7 @@ class _HeaderCreateProfileState extends State<HeaderCreateProfile> {
               ),
               Padding(
                   padding: EdgeInsets.only(top: 0.03 * sizeHeightcreen),
+                  //progression bar
                   child: Container(
                       height: 0.01 * sizeHeightcreen,
                       width: 0.9 * sizeWidthScreen,

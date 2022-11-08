@@ -6,7 +6,7 @@ class DatabaseService {
   DatabaseService(this.uid);
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection('User Information');
-
+  bool docexist = false;
   Future<void> saveUser(
       String name,
       String genre,
@@ -32,26 +32,49 @@ class DatabaseService {
     });
   }
 
-AppUserData _userFromSnapshot(
-      DocumentSnapshot snapshot) {
-    var data = snapshot.data()as Map<String, dynamic>;
+  AppUserData _userFromSnapshot(DocumentSnapshot snapshot) {
+    var data = snapshot.data() as Map<String, dynamic>;
     if (data == null) throw Exception('user information not found');
     return AppUserData(
-       uid:  snapshot.id,
-        name :data["Name"],
-        genre :data["Genre"],
-        age :data["Age"],
+        uid: snapshot.id,
+        name: data["Name"],
+        genre: data["Genre"],
+        age: data["Age"],
         situation: data["Situation"],
-        langue:data["Langue parlé"],
-        centreDinteret:data["Centre d'interet"],
+        langue: data["Langue parlé"],
+        centreDinteret: data["Centre d'interet"],
         traitDeCaractere: data["Trait de caractere"],
-        habitudeAlimentaire:data["Habitude alimentaire"],
-        nationalite:data["Nationalité"],
-        lifeStyle:data["Life Style"]);
-  } 
+        habitudeAlimentaire: data["Habitude alimentaire"],
+        nationalite: data["Nationalité"],
+        lifeStyle: data["Life Style"]);
+  }
+
+  getUser() {
+    return userCollection.doc(uid).get().then((DocumentSnapshot snapshot) {
+      if (snapshot.exists) {
+        print('Document exists on the database');
+        docexist = true;
+      }
+    });
+  }
+
+  Future getDoc(a) async {
+    var a = await FirebaseFirestore.instance
+        .collection('User Information')
+        .doc(uid)
+        .get();
+    if (a.exists) {
+      print('Exists');
+      return a.exists;
+    }
+    if (!a.exists) {
+      print('Not exists');
+      return true;
+    }
+  }
 
   Stream<AppUserData> get user {
-     return userCollection.doc(uid).snapshots().map(_userFromSnapshot);
+    return userCollection.doc(uid).snapshots().map(_userFromSnapshot);
   }
 } 
 

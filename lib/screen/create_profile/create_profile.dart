@@ -46,7 +46,7 @@ class _CreateProfileState extends State<CreateProfile> {
 
   @override
   Widget build(BuildContext context) {
-    print(result);
+
     return Scaffold(
       body: Stack(children: [
         HeaderCreateProfile(

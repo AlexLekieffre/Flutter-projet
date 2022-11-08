@@ -14,14 +14,14 @@ class ButtonNext extends StatefulWidget {
   final int totalStep;
   final TextEditingController nameController;
 
-  const ButtonNext(
+  ButtonNext(
       {super.key,
       required this.result,
       required this.nameController,
       required this.step,
       required this.totalStep,
       required this.parentVoid});
-
+  bool docexist = false;
   @override
   State<ButtonNext> createState() => _ButtonNextState();
 }
@@ -64,8 +64,8 @@ class _ButtonNextState extends State<ButtonNext> {
                     widget.result[11].toString(),
                   )
                 : null;
-
-            
+            widget.step == 3?
+            Navigator.pushReplacementNamed(context, '/'):null;
           },
           child: Container(
             alignment: Alignment.center,

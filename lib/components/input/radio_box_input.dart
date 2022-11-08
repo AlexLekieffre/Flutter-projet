@@ -284,7 +284,7 @@ class _BoxRadioState extends State<BoxRadio> {
           }
         }
 
-        print(widget.result);
+        
       },
       child: Padding(
         padding: EdgeInsets.only(
