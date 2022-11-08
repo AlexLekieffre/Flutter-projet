@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:stage/Utils/app_color.dart';
+import 'package:stage/Utils/app_image.dart';
+import 'package:stage/common/loading.dart';
 import 'package:stage/models/user.dart';
+import 'package:stage/screen/home/info_user.dart';
 import 'package:stage/services/authentication.dart';
 import 'package:stage/services/database.dart';
 
@@ -31,7 +35,27 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-        body: ,
+        body: Container(child: InfoUser()),
+        bottomNavigationBar: BottomNavigationBar(
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(AppImage.homeIcon),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(AppImage.startIcon),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(AppImage.messageIcon),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(AppImage.profilIcon),
+          label: '',
+        ),
+      ],
+    )
       ),
     );
   }

@@ -4,9 +4,10 @@ import 'package:stage/models/user.dart';
 class DatabaseService {
   final String uid;
   DatabaseService(this.uid);
+
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection('User Information');
-  bool docexist = false;
+  
   Future<void> saveUser(
       String name,
       String genre,
@@ -33,6 +34,7 @@ class DatabaseService {
   }
 
   AppUserData _userFromSnapshot(DocumentSnapshot snapshot) {
+    
     var data = snapshot.data() as Map<String, dynamic>;
     if (data == null) throw Exception('user information not found');
     return AppUserData(
@@ -49,15 +51,7 @@ class DatabaseService {
         lifeStyle: data["Life Style"]);
   }
 
-  getUser() {
-    return userCollection.doc(uid).get().then((DocumentSnapshot snapshot) {
-      if (snapshot.exists) {
-        print('Document exists on the database');
-        docexist = true;
-      }
-    });
-  }
-
+ 
   Future getDoc(a) async {
     var a = await FirebaseFirestore.instance
         .collection('User Information')
@@ -72,9 +66,17 @@ class DatabaseService {
       return true;
     }
   }
+    List<AppUserData> _userListFromSnapshot(QuerySnapshot<Object?> snapshot) {
+    return snapshot.docs.map((doc) {
+      return _userFromSnapshot(doc);
+    }).toList();
+  }
 
   Stream<AppUserData> get user {
     return userCollection.doc(uid).snapshots().map(_userFromSnapshot);
+  }
+  Stream<List<AppUserData>> get users {
+    return userCollection.snapshots().map(_userListFromSnapshot);
   }
 } 
 
