@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -50,22 +52,22 @@ class _ButtonNextState extends State<ButtonNext> {
                     widget.result[5].toString() != 'String'
                 ? widget.parentVoid(widget.step + 1)
                 : null;
-            widget.step == 3
-                ? await _userCollection.saveUser(
-                    widget.result[2].toString(),
-                    widget.result[3].toString(),
-                    widget.result[4].toString(),
-                    widget.result[5].toString(),
-                    widget.result[6].toString(),
-                    widget.result[7].toString(),
-                    widget.result[8].toString(),
-                    widget.result[9].toString(),
-                    widget.result[10].toString(),
-                    widget.result[11].toString(),
-                  )
-                : null;
-            widget.step == 3?
-            Navigator.pushReplacementNamed(context, '/'):null;
+            if (widget.step == 3) {
+              await _userCollection.saveUser(
+                widget.result[2].toString(),
+                widget.result[3].toString(),
+                widget.result[4].toString(),
+                widget.result[5].toString(),
+                widget.result[6].toString(),
+                widget.result[7].toString(),
+                widget.result[8].toString(),
+                widget.result[9].toString(),
+                widget.result[10].toString(),
+                widget.result[11].toString(),
+              );
+              Navigator.pushReplacementNamed(context, '/');
+            }
+            ;
           },
           child: Container(
             alignment: Alignment.center,

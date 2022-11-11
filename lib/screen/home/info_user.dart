@@ -12,41 +12,33 @@ class InfoUser extends StatefulWidget {
 class _InfoUserState extends State<InfoUser> {
   @override
   Widget build(BuildContext context) {
-    final users = Provider.of<AppUserData>(context);
+    final userInfo = Provider.of<AppUserData>(context);
 
-    return UserTile(users);
-  }
-}
-
-class UserTile extends StatelessWidget {
-  final AppUserData user;
-
-  const UserTile(this.user);
-
-  @override
-  Widget build(BuildContext context) {
-    final currentUser = Provider.of<AppUser?>(context);
-    if (currentUser == null) throw Exception("current user not found");
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
-      child: Card(
-          margin:
-              EdgeInsets.only(top: 12.0, bottom: 6.0, left: 20.0, right: 20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text('Nom : ${user.name}'),
-              Text('Genre : ${user.genre}'),
-              Text('Age : ${user.age}'),
-              Text('Situation :${user.situation}'),
-              Text('Nationalité : ${user.nationalite}'),
-              Text('Langue parlé : ${user.langue}'),
-              Text('Trait de caractère : ${user.traitDeCaractere}'),
-              Text('Centre d\'interet ${user.centreDinteret}'),
-              Text('Habitude Alimentaire ${user.habitudeAlimentaire}'),
-              Text('Life style ${user.lifeStyle}')
-            ],
-          )),
+      child: Center(
+        child: Card(
+            margin:
+                const EdgeInsets.only(top: 12.0, bottom: 6.0, left: 20.0, right: 20.0),
+            child: Column(
+              
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text('Utilisateur : ${userInfo.uid}'),
+                Text('Nom : ${userInfo.name}'),
+                Text('Genre : ${userInfo.genre}'),
+                Text('Age : ${userInfo.age}'),
+                Text('Situation :${userInfo.situation}'),
+                Text('Nationalité : ${userInfo.nationalite}'),
+                Text('Langue parlé : ${userInfo.langue}'),
+                Text('Trait de caractère : ${userInfo.traitDeCaractere}'),
+                Text('Centre d\'interet : ${userInfo.centreDinteret}'),
+                Text('Habitude Alimentaire : ${userInfo.habitudeAlimentaire}'),
+                Text('Life style : ${userInfo.lifeStyle}')
+              ],
+            )),
+      ),
     );
   }
 }
+

@@ -19,7 +19,6 @@ class AuthenticationService {
       User? user = result.user;
       return _userFromFirebaseUser(user);
     } catch (exception) {
-      print(exception.toString());
       return null;
     }
   }
@@ -31,7 +30,6 @@ class AuthenticationService {
       User? user = result.user;
       return _userFromFirebaseUser(user);
     } catch (exception) {
-      print(exception.toString());
       return null;
     }
   }
@@ -40,7 +38,7 @@ class AuthenticationService {
     try {
       return await _auth.signOut();
     } catch (exception) {
-      print(exception.toString());
+      return null;
     }
   }
 }

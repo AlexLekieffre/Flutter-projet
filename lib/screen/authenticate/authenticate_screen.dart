@@ -97,7 +97,8 @@ class _AutyhenticateScreenState extends State<AutyhenticateScreen> {
                           var password = passwordController.value.text;
                           var email = emailController.value.text;
 
-                          dynamic result = showSignIn?await _auth.signInWithEmailAndPassword(email, password):await _auth.registerWithEmailAndPassword(email, password);
+                          dynamic result = showSignIn?await _auth.signInWithEmailAndPassword(email, password)
+                          :await _auth.registerWithEmailAndPassword(email, password);
                           if (result == null) {
                             setState(() {
                               loading = false;

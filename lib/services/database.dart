@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stage/models/user.dart';
 
@@ -36,7 +38,6 @@ class DatabaseService {
   AppUserData _userFromSnapshot(DocumentSnapshot snapshot) {
     
     var data = snapshot.data() as Map<String, dynamic>;
-    if (data == null) throw Exception('user information not found');
     return AppUserData(
         uid: snapshot.id,
         name: data["Name"],

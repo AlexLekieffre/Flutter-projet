@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'package:stage/Utils/app_color.dart';
 import 'package:stage/Utils/app_image.dart';
 import 'package:stage/components/text/title.dart';
-import 'package:stage/models/user.dart';
 import 'package:stage/services/authentication.dart';
 
 class HeaderCreateProfile extends StatefulWidget {

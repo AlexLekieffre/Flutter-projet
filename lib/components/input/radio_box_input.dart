@@ -74,7 +74,7 @@ class _RadioBoxInputState extends State<RadioBoxInput> {
                           .map((e) => e['ligne'] == 1
                               ? Expanded(
                                   flex: e['item'].length > 12
-                                      ? 10
+                                      ? 7
                                       : e['item'].length < 8
                                           ? e['item'].length
                                           : 7,

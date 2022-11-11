@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stage/models/user.dart';
 import 'package:stage/screen/authenticate/authenticate_screen.dart';
+import 'package:stage/screen/create_profile/create_profile.dart';
 import 'package:stage/screen/spash_screen_wrapper.dart';
 import 'package:stage/services/authentication.dart';
 

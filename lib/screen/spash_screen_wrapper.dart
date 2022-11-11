@@ -15,13 +15,11 @@ class SplashScreenWrapper extends StatefulWidget {
 }
 
 class _SplashScreenWrapperState extends State<SplashScreenWrapper> {
-  
   @override
   Widget build(BuildContext context) {
-    
     final user = Provider.of<AppUser?>(context);
-    final userData = Provider.of<DatabaseService?>(context);
 
+    // ignore: unused_local_variable
     final userDataDoc = FirebaseFirestore.instance
         .collection('User Information')
         .doc(user?.uid)
